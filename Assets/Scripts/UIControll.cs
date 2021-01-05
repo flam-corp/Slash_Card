@@ -7,6 +7,8 @@ public class UIControll : MonoBehaviour
     [SerializeField] private GameObject startPannel;
     [SerializeField] private GameObject pausePannel;
 
+    [SerializeField] private Animator storeAnimator;
+
     private void Start()
     {
         Time.timeScale = 0f;
@@ -30,6 +32,8 @@ public class UIControll : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        pausePannel.SetActive(false);
+        storeAnimator.SetBool("Hide", true);
+
+        //pausePannel.SetActive(false);
     }
 }

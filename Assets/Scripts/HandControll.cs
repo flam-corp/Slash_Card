@@ -7,14 +7,14 @@ public class Cache
     public CardLogic logic;
     public Image image;
     public Button button;
-    public GameObject obj;
+    public GameObject card;
 
-    public Cache(CardLogic _logic, Image _image, Button _button, GameObject _obj)
+    public Cache(CardLogic _logic, Image _image, Button _button, GameObject _card)
     {
         logic = _logic;
         image = _image;
         button = _button;
-        obj = _obj;
+        card = _card;
     }
 }
 
@@ -33,11 +33,11 @@ public class HandControll : MonoBehaviour
     HorizontalLayoutGroup tempGroup;
     public Suit tempSuit = Suit.club;
 
-    private const int minSpacing = -125;
-    private const int maxSpacing = -110;
-
+    private const int minSpacing = -130;
+    private const int maxSpacing = -115;
 
     List<Cache> cache = new List<Cache>();
+
 
     public void SortingCards(List<GameObject> _cards) // Called after the end of the drag animation
     {
@@ -74,6 +74,7 @@ public class HandControll : MonoBehaviour
 
             tempGroup = ConvertSuit(true).GetComponent<HorizontalLayoutGroup>();
             tempGroup.spacing = maxSpacing;
+
         }
     }
 
@@ -101,7 +102,7 @@ public class HandControll : MonoBehaviour
     {
         foreach (var card in cache)
         {
-            if (_card == card.obj)
+            if (_card == card.card)
             {
                 cache.Remove(card);
                 break;
@@ -148,6 +149,7 @@ public class HandControll : MonoBehaviour
             }
             if (!check)
             {
+
                 suit = GetRandomSuit();
             }
         }
@@ -160,5 +162,10 @@ public class HandControll : MonoBehaviour
     {
         int rand = Random.Range(0, 4);
         return (Suit)rand;
+    }
+
+    private void DisableSuitHand(GameObject hand)
+    {
+        hand.SetActive(false);
     }
 }

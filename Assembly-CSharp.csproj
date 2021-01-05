@@ -67,10 +67,13 @@
     <Compile Include="Assets\Scripts\Card\PickCard.cs" />
     <Compile Include="Assets\Scripts\Card\Spawner.cs" />
     <Compile Include="Assets\Scripts\HandControll.cs" />
+    <Compile Include="Assets\Scripts\HidePause.cs" />
+    <Compile Include="Assets\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\Model\CardModel.cs" />
     <Compile Include="Assets\Scripts\Model\Suit.cs" />
-    <Compile Include="Assets\Scripts\OrientationSetter.cs" />
     <Compile Include="Assets\Scripts\ScoreCounter.cs" />
+    <Compile Include="Assets\Scripts\Screen\OrientationSetter.cs" />
+    <Compile Include="Assets\Scripts\Screen\SafeArea.cs" />
     <Compile Include="Assets\Scripts\Shop\Board.cs" />
     <Compile Include="Assets\Scripts\Shop\Item.cs" />
     <Compile Include="Assets\Scripts\Shop\Store.cs" />

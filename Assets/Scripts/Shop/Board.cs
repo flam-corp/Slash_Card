@@ -18,7 +18,7 @@ public class Board : MonoBehaviour
 
         store._event += SetTextColor;
 
-        GetIndex();
+        SetTextColor();
     }
 
     public void PickBoard() // Selecting a table from the store
@@ -29,18 +29,9 @@ public class Board : MonoBehaviour
 
     private void SetTextColor() // Change text color on shop
     {
-        GetIndex();
-    }
-
-    private void GetIndex() // Get index from PlayerPrefs for shop text
-    {
-        if (PlayerPrefs.HasKey("BoardIndex"))
-        {
-            int key = PlayerPrefs.GetInt("BoardIndex");
-            if (key == item.id)
-                standartText.color = Color.yellow;
-            else
-                standartText.color = Color.white;
-        }
+        if(store.index == item.id)
+            standartText.color = Color.yellow;
+        else
+            standartText.color = Color.white;
     }
 }

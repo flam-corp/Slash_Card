@@ -9,34 +9,41 @@ public class Store : MonoBehaviour
     [SerializeField] private Image boardImage;
     public UnityAction _event;
     private bool isStart = true;
+    public int index { private set; get; }
 
-    private void Start()
+    private void Awake()
     {
         if (PlayerPrefs.HasKey("R"))
         {
             currentColor = new Color(PlayerPrefs.GetFloat("R"), PlayerPrefs.GetFloat("G"), PlayerPrefs.GetFloat("B"));
-            SetColorBoard(currentColor);
+            index = PlayerPrefs.GetInt("BoardIndex");
+            SetColorBoard(currentColor, index, false);
         }
         else
         {
-            SaveColor(Color.white, 0);
+            SaveData(Color.white, 0);
+            index = 0;
         }
-        isStart = true;
+        isStart = false;
     }
 
-    public void SetColorBoard(Color color, int index = 0)
+    public void SetColorBoard(Color color, int _index, bool isSave = true)
     {
         boardImage.color = color;
-        SaveColor(color, index);
+        index = _index;
+        if (isSave)
+        {
+            SaveData(color, index);
+        }
         if (!isStart)
         {
             _event.Invoke();
         }
     }
 
-    private void SaveColor(Color color, int index) // Save data
+    private void SaveData(Color color, int _index) // Save data
     {
-        PlayerPrefs.SetInt("BoardIndex", index);
+        PlayerPrefs.SetInt("BoardIndex", _index);
 
         PlayerPrefs.SetFloat("R", color.r);
         PlayerPrefs.SetFloat("G", color.g);
